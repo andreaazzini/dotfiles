@@ -1,10 +1,13 @@
 module.exports = {
   config: {
+    shell: '/usr/local/bin/zsh',
+
     // default font size in pixels for all tabs
     fontSize: 13,
 
     // font family with optional fallbacks
-    fontFamily: '"SF Mono", "Fira Code", Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
+    fontFamily: 'IBM Plex Mono, Fira Code, Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
+    uiFontFamily: 'IBM Plex Mono, Fira Code, Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     cursorColor: 'rgba(215,113,240,0.8)',
@@ -16,10 +19,11 @@ module.exports = {
     foregroundColor: '#fff',
 
     // terminal background color
-    backgroundColor: '#282a37',
+    // backgroundColor: '#282a37',
+    backgroundColor: '#1c1c1c',
 
     // border color (window, tabs)
-    borderColor: '#282a37',
+    borderColor: '#1c1c1c',
 
     // custom css to embed in the main window
     css: '',
@@ -98,8 +102,7 @@ module.exports = {
   plugins: [
     'hyper-blink',
     'hyperterm-1password',
-    'hyper-snazzy',
-    'hyper-import-sf-mono'
+    'hyper-snazzy'
   ],
 
   // in development, you can create a directory under
