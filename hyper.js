@@ -25,15 +25,14 @@ module.exports = {
     // border color (window, tabs)
     borderColor: '#1c1c1c',
 
+    // selection color
+    selectionColor: 'rgba(227,227,227,0.3)',
+
     // custom css to embed in the main window
     css: '',
 
     // custom css to embed in the terminal window
-    termCSS: `
-      x-screen x-row {
-          font-variant-ligatures: initial;
-      }
-    `,
+    termCSS: '',
 
     // set to `true` if you're using a Linux set up
     // that doesn't shows native menus
