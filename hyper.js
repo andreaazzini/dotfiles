@@ -16,7 +16,7 @@ module.exports = {
     cursorShape: 'BLOCK',
 
     // color of the text
-    foregroundColor: '#fff',
+    foregroundColor: '#ffffff',
 
     // terminal background color
     // backgroundColor: '#282a37',
@@ -85,11 +85,6 @@ module.exports = {
 
     // if true, selected text will automatically be copied to the clipboard
     copyOnSelect: false
-
-    // URL to custom bell
-    // bellSoundURL: 'http://example.com/bell.mp3',
-
-    // for advanced config flags please refer to https://hyper.is/#cfg
   },
 
   // a list of plugins to fetch and install from npm
@@ -99,8 +94,8 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    'hyper-blink',
-    'hyperterm-1password',
+    //'hyper-blink',
+    //'hyperterm-1password',
     'hyper-snazzy'
   ],
 
