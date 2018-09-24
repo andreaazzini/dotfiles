@@ -7,7 +7,7 @@ export ZSH=/Users/andrea/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,7 +51,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git, git-prompt)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -83,11 +83,14 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-autoload -U promptinit; promptinit
-prompt pure
-alias vim="nvim"
 
+PROMPT="▲ %~ "
+
+# autoload -U promptinit; promptinit
+# prompt pure
+alias vim="nvim"
 
 export PATH=$HOME/anaconda/bin:$HOME/.mix/escripts:$PATH
 
 export PATH=/Users/andrea/.local/bin/luna-studio:$PATH
+unset zle_bracketed_paste
