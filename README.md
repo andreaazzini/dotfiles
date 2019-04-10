@@ -1,5 +1,7 @@
 # Dotfiles
 
+I use iTerm2 nightly, install it and import `verminal.json` as a profile.
+
 ## Install
 
 ### Homebrew
@@ -44,10 +46,3 @@ source ~/.zshrc
 ```
 
 When in vim, run `:PlugInstall`.
-
-### Hyper
-
-```
-brew cask install hyper
-ln -s ~/dotfiles/hyper.js ~/.hyper.js
-```

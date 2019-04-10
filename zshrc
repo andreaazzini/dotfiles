@@ -92,5 +92,11 @@ alias vim="nvim"
 
 export PATH=$HOME/anaconda/bin:$HOME/.mix/escripts:$PATH
 
-export PATH=/Users/andrea/.local/bin/luna-studio:$PATH
+# export PATH=/Users/andrea/.local/bin/luna-studio:$PATH
+export PATH=$HOME/.local/bin:$PATH
 unset zle_bracketed_paste
+if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+alias pyfmt="isort -rc -y && black ."

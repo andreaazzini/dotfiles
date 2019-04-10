@@ -5,11 +5,15 @@ Plug 'cocopon/iceberg.vim'
 Plug 'hzchirs/vim-material'
 Plug 'chr4/nginx.vim'
 Plug 'elixir-editors/vim-elixir'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 set background = "dark"
+set encoding=utf-8
 
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
+syntax on
+let g:onedark_color_overrides = {
+\   "black": {"gui": "#000000", "cterm": "0", "cterm16": "0" },
+\ }
+colorscheme onedark
