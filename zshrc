@@ -84,7 +84,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-PROMPT="▲ %~ "
+PROMPT="↯ %~ "
 
 # autoload -U promptinit; promptinit
 # prompt pure
@@ -92,11 +92,27 @@ alias vim="nvim"
 
 export PATH=$HOME/anaconda/bin:$HOME/.mix/escripts:$PATH
 
-# export PATH=/Users/andrea/.local/bin/luna-studio:$PATH
 export PATH=$HOME/.local/bin:$PATH
 unset zle_bracketed_paste
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-alias pyfmt="isort -rc -y && black ."
+alias pyfmt="autoflake --in-place --remove-all-unused-imports --remove-unused-variables -r . && python -m isort -y && black -l 120"
+alias d="python -m darwin.cli"
+
+###-tns-completion-start-###
+# if [ -f /Users/andrea/.tnsrc ]; then 
+#     source /Users/andrea/.tnsrc 
+# fi
+###-tns-completion-end-###
+
+# Add Visual Studio Code (code)
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# source asdf
+. $HOME/.asdf/asdf.sh
+# add asdf completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# run compinit
+autoload -Uz compinit && compinit

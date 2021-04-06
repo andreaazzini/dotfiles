@@ -15,5 +15,6 @@ set encoding=utf-8
 syntax on
 let g:onedark_color_overrides = {
 \   "black": {"gui": "#000000", "cterm": "0", "cterm16": "0" },
+\   "white": {"gui": "#ffffff", "cterm": "255", "cterm16": "255" },
 \ }
 colorscheme onedark
