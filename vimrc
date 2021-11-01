@@ -8,17 +8,31 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-mix-format'
 Plug 'preservim/nerdtree'
+Plug 'slashmili/alchemist.vim'
+Plug 'vim-airline/vim-airline'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'dense-analysis/ale'
+Plug 'zchee/deoplete-jedi'
 call plug#end()
 
 set background = "dark"
 set encoding=utf-8
+set number
+
+" Set python 3 host
+let g:python3_host_prog='/home/azzarcher/miniconda3/bin/python'
 
 syntax on
 let g:onedark_color_overrides = {
-\   "black": {"gui": "#000000", "cterm": "0", "cterm16": "0" },
+\   "black": {"gui": "#0a0a0a", "cterm": "0", "cterm16": "0" },
 \   "white": {"gui": "#ffffff", "cterm": "255", "cterm16": "255" },
 \ }
 colorscheme onedark
@@ -29,22 +43,47 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
   \ }
 
-" Use tab for trigger completion with characters ahead and navigate.
-" " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
 " Elixir auto-formatting
 let g:mix_format_on_save = 1
 
-" NerdTree
-map <C-n> :NERDTreeToggle<CR>
+" Airline
+let g:airline_powerline_fonts = 1
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+
+" NERDTree
+
+" Start NERDTree. If a file is specified, move the cursor to its window.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+
+" Remap keys
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+let NERDTreeShowHidden=1
+
+" Ale
+let g:ale_linters = {
+\   'python': ['pylint'],
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'python': ['black']
+\}
+
+let g:ale_fix_on_save = 1
+
+
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
