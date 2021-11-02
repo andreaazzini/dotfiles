@@ -21,11 +21,11 @@ else
 endif
 Plug 'dense-analysis/ale'
 Plug 'zchee/deoplete-jedi'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 set background = "dark"
 set encoding=utf-8
-set number
 
 " Set python 3 host
 let g:python3_host_prog='/home/azzarcher/miniconda3/bin/python'
@@ -59,7 +59,10 @@ inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " Start NERDTree. If a file is specified, move the cursor to its window.
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | sp | wincmd j | endif
+autocmd VimEnter * ter
+autocmd VimEnter * wincmd k | 8 wincmd + | set number
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Remap keys
 nnoremap <C-t> :NERDTreeToggle<CR>
