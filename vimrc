@@ -22,6 +22,7 @@ endif
 Plug 'dense-analysis/ale'
 Plug 'zchee/deoplete-jedi'
 Plug 'ryanoasis/vim-devicons'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 set background = "dark"
